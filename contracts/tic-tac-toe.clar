@@ -181,19 +181,3 @@
     )
 )
 
-;; Given a board and three cells to look at on the board
-;; Return true if all three are not empty and are the same value (all X or all O)
-;; Return false if any of the three is empty or a different value
-(define-private (is-line (board (list 9 uint)) (a uint) (b uint) (c uint)) 
-    (let (
-        ;; Value of cell at index a
-        (a-val (unwrap! (element-at? board a) false))
-        ;; Value of cell at index b
-        (b-val (unwrap! (element-at? board b) false))
-        ;; Value of cell at index c
-        (c-val (unwrap! (element-at? board c) false))
-    )
-
-    ;; a-val must equal b-val and must also equal c-val while not being empty (non-zero)
-    (and (is-eq a-val b-val) (is-eq a-val c-val) (not (is-eq a-val u0)))
-))
